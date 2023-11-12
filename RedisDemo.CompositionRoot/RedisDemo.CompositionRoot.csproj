@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RedisDemo.Models\RedisDemo.Models.csproj" />
+    <ProjectReference Include="..\RedisDemo.Data\RedisDemo.Data.csproj" />
+    <ProjectReference Include="..\RedisDemo.Services\RedisDemo.Services.csproj" />
+  </ItemGroup>
+
+</Project>
