@@ -17,14 +17,13 @@ namespace RedisDemo.Data.Cache
         {
             string cacheValue = await _distributedCache.GetStringAsync(key);
 
-            if (string.IsNullOrWhiteSpace(cacheValue))
+            if (cacheValue == null)
             {
                 return default;
             }
 
             T value = JsonConvert.DeserializeObject<T>(cacheValue);
             return value;
-
         }
 
         public async Task RemoveAsync(string key)
@@ -35,6 +34,11 @@ namespace RedisDemo.Data.Cache
         public async Task SetAsync<T>(string key, T value) where T : class
         {
             string cacheValue = JsonConvert.SerializeObject(value);
+
+            //Example to add expire options
+            //var options = new DistributedCacheEntryOptions(); // create options object
+            //options.SetSlidingExpiration(TimeSpan.FromSeconds(10)); // 10 seconds sliding expiration
+
             await _distributedCache.SetStringAsync(key, cacheValue);
         }
     }
