@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RedisDemo.Models.Repositories
+namespace RedisDemo.Models.Cache
 {
     public interface IDistributedCacheService
     {

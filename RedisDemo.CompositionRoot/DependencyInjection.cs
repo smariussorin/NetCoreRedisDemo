@@ -10,6 +10,8 @@ using RedisDemo.Data.Employees;
 using RedisDemo.Data.Model;
 using RedisDemo.Services.Employees;
 using StackExchange.Redis;
+using RedisDemo.Models.AdventureWorks;
+using RedisDemo.Models.Cache;
 
 namespace RedisDemo.CompositionRoot
 {
@@ -74,7 +76,7 @@ namespace RedisDemo.CompositionRoot
 
             services.AddScoped<IEmployeesRepository, EmployeesRepository>();
 
-            services.AddScoped<IEmployeesExtendedCacheRepository, EmployeesExtendedCacheRepository>();
+            services.AddScoped<IExtendedCacheRepository<Employee>, EmployeesExtendedCacheRepository>();
             
             return services;
         }

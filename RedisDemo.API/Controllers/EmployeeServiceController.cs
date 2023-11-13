@@ -1,7 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using RedisDemo.Models.AdventureWorks;
-using RedisDemo.Data.Model;
 using RedisDemo.Services.Employees;
 
 namespace RedisDemo.API.Controllers
@@ -24,9 +22,27 @@ namespace RedisDemo.API.Controllers
         }
 
         [HttpGet]
+        public async Task<IEnumerable<Employee>> GetAllFromLocalCache()
+        {
+            return await _employeeService.GetAllFromLocalCacheAsync();
+        }
+
+        [HttpGet]
+        public async Task<IEnumerable<Employee>> GetAllFromCache()
+        {
+            return await _employeeService.GetAllFromCacheAsync();
+        }
+
+        [HttpGet]
         public async Task<Employee> GetByLoginId(string loginId)
         {
             return await _employeeService.GetByLoginIdAsync(loginId);
+        }
+
+        [HttpGet]
+        public async Task<Employee> GetByLoginIdFromLocalCache(string loginId)
+        {
+            return await _employeeService.GetByLoginIdFromLocalCacheAsync(loginId);
         }
 
         [HttpGet]

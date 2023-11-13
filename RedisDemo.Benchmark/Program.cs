@@ -12,7 +12,8 @@ var summary = BenchmarkRunner.Run(typeof(Program).Assembly);
 Console.ReadLine();
 
 [MemoryDiagnoser]
-[SimpleJob(RunStrategy.ColdStart, iterationCount: 5)]
+[SimpleJob(RunStrategy.ColdStart, iterationCount: 15, launchCount: 5)]
+[MinColumn, MaxColumn, MeanColumn, MedianColumn]
 public class EmployeesServiceBenchmark
 {
     private EmployeesService _employeesService;
@@ -43,6 +44,12 @@ public class EmployeesServiceBenchmark
     public async Task GetByLoginId()
     {
         await _employeesService.GetByLoginIdAsync(LoginId);
+    }
+
+    [Benchmark]
+    public async Task GetByLoginIdFromLocalCache()
+    {
+        await _employeesService.GetByLoginIdFromLocalCacheAsync(LoginId);
     }
 
     [Benchmark]

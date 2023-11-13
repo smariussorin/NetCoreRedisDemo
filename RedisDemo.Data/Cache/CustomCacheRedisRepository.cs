@@ -1,10 +1,11 @@
 ﻿using Newtonsoft.Json;
+using RedisDemo.Models.Cache;
 using StackExchange.Redis;
 using System.Text;
 
 namespace RedisDemo.Data.Cache
 {
-    public abstract partial class ExtendedCacheRedisRepository<T>
+    public abstract partial class ExtendedCacheRedisRepository<T> : IExtendedCacheRepository<T>
     {
         public virtual int DbId { get; } = 0;
 

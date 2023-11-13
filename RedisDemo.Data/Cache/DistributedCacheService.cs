@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Caching.Distributed;
 using Newtonsoft.Json;
-using RedisDemo.Models.Repositories;
+using RedisDemo.Models.Cache;
 
 namespace RedisDemo.Data.Cache
 {
