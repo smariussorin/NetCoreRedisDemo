@@ -773,7 +773,7 @@ public partial class AdventureWorksContext : DbContext
         {
             entity.HasKey(e => e.BusinessEntityId).HasName("PK_Employee_BusinessEntityID");
 
-            entity.ToTable("Employee", "HumanResources", tb =>
+            entity.ToTable("Employee_Clone", "HumanResources", tb =>
             {
                 tb.HasComment("Employee information such as salary, department, and title.");
                 tb.HasTrigger("dEmployee");
@@ -807,7 +807,7 @@ public partial class AdventureWorksContext : DbContext
                 .HasMaxLength(50)
                 .HasComment("Work title such as Buyer or Sales Representative.");
             entity.Property(e => e.LoginId)
-                .HasMaxLength(256)
+                .HasMaxLength(512)
                 .HasComment("Network login.")
                 .HasColumnName("LoginID");
             entity.Property(e => e.MaritalStatus)
@@ -819,7 +819,7 @@ public partial class AdventureWorksContext : DbContext
                 .HasComment("Date and time the record was last updated.")
                 .HasColumnType("datetime");
             entity.Property(e => e.NationalIdnumber)
-                .HasMaxLength(15)
+                .HasMaxLength(512)
                 .HasComment("Unique national identification number such as a social security number.")
                 .HasColumnName("NationalIDNumber");
             entity.Property(e => e.OrganizationLevel)
