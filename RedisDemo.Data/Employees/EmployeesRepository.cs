@@ -14,9 +14,9 @@ namespace RedisDemo.Data.Employees
             _dbContext = dbContext;
         }
 
-        public async Task<List<Employee>> GetAllAsync()
+        public async Task<List<Employee>> GetAllAsync(int top = 1000)
         {
-            return await _dbContext.Employees.ToListAsync();
+            return await _dbContext.Employees.Take(top).ToListAsync();
         }
 
         public async Task<Employee> GetByLoginIdAsync(string loginId)
